@@ -371,8 +371,10 @@ namespace TheWineSociety.FunctionalTests.Core
             NameValueCollection settings = ConfigurationManager.GetSection("environments/" + bsBrowser) as NameValueCollection;
             DesiredCapabilities capability = new DesiredCapabilities();
 
+            capability.SetCapability("browserName", bsBrowser);
             capability.SetCapability("browserstack.user", bsUsernName);
             capability.SetCapability("browserstack.key", bsPassword);
+           
             driver = new RemoteWebDriver(new Uri("http://" + ConfigurationManager.AppSettings.Get("server") + "/wd/hub/"), capability);
             return driver;
         }
