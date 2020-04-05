@@ -15,7 +15,6 @@ namespace TheWineSociety.FunctionalTests.Core.PageObjects
     public class ProductsDetailsPage : CommonMethods
     {
              
-  
         public ProductsDetailsPage()
         {
             PageFactory.InitElements(driver, this);
@@ -31,13 +30,13 @@ namespace TheWineSociety.FunctionalTests.Core.PageObjects
         [FindsBy(How = How.CssSelector, Using = "#productAccordion .row .accordion__header")]
         public IWebElement ProducerProfileHeading { set; get; }
 
-        [FindsBy(How = How.CssSelector, Using = "#productAccordion #collapseProducerContent .accordion__content-container h5")]
+        [FindsBy(How = How.CssSelector, Using = "#productAccordion #collapseProducerContent .h5")]
         public IWebElement ProducerName { set; get; }
 
-        [FindsBy(How = How.CssSelector, Using = "#productAccordion #collapseProducerContent .accordion__content-container .read-more")]
+        [FindsBy(How = How.CssSelector, Using = "#productAccordion #collapseProducerContent .critic-review__review")]
         public IWebElement ProducerDescription { set; get; }
 
-        [FindsBy(How = How.CssSelector, Using = "#productAccordion .accordion__content img")]
+        [FindsBy(How = How.CssSelector, Using = "#productAccordion .profile__image-container img")]
         public IWebElement ProducerProfileAvatar { set; get; }
 
         //Product Details
@@ -107,7 +106,6 @@ namespace TheWineSociety.FunctionalTests.Core.PageObjects
         {
             VerifyText(outOfStockText, "Out of stock");
             IsElementExistsLocator(viewAlternativeWineLink, true);
-
         }
 
         public void VerifyAlternativeProductDetails(string altProductName, string altProdDescription)

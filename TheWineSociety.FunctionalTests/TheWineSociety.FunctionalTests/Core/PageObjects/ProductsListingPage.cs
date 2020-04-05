@@ -87,6 +87,8 @@ namespace TheWineSociety.FunctionalTests.Core.PageObjects
         public void selectProduct()
         {
             ClickElement(ProductLink);
+            WaitForPageToLoad();
+
         }
 
         public void SortResultsList(string sortType)
@@ -164,7 +166,7 @@ namespace TheWineSociety.FunctionalTests.Core.PageObjects
             List<decimal> listA = item.Select(s =>
             decimal.Parse(s)).ToList();
             List<decimal> listB = listA.OrderBy(x => x).ToList();
-            Assert.IsTrue(listA.SequenceEqual(listB));
+            Assert.IsTrue(listA.SequenceEqual(listB),"Results list is not displayed in order Price LOW to HIGH");
         }
 
         public List<IWebElement> GetListElemntsProductName()
@@ -195,7 +197,7 @@ namespace TheWineSociety.FunctionalTests.Core.PageObjects
             List<string> listA = item.Select(s =>
             s).ToList();
             List<string> listB = listA.OrderBy(x => x).ToList();
-            Assert.IsTrue(listA.SequenceEqual(listB));
+            Assert.IsTrue(listA.SequenceEqual(listB), "Results list is not displayed in Alphabetical order A to Z");
         }
     }
 }

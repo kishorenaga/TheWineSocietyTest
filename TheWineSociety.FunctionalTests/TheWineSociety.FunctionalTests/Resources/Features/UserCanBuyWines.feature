@@ -36,7 +36,7 @@ Scenario Outline: User can see the producer profile
 	And I select a product to see the producer details 
 	Then I see the '<ProducerName>', '<Description>' and Avatar
 	Examples: 
-	| Name                              | ProducerName | Description                                                                                                                                                                                                              |
+	| Name                              | ProducerName  | Description                                                                                                                                                                                                              |
 	| The Society's Côtes-du-Rhône 2018 | Feudo Arancio | This substantial Sicilian estate is based on the windy south coast of Sicily. It has two large vineyard areas, covering almost 700 hectares in total, situated at Sambuca di Sicilia in the west and Ragusa in the east. |
 
 @e2e @ProductDetails

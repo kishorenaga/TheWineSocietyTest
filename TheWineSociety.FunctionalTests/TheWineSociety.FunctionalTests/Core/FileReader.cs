@@ -10,9 +10,6 @@ namespace TheWineSociety.FunctionalTests.Core
     public class FileReader
     {
 
-
-
-
         public FileReader()
         {
 
@@ -34,20 +31,15 @@ namespace TheWineSociety.FunctionalTests.Core
         public string getProjectRootPath()
         {
             String rootPath = System.IO.Directory.GetCurrentDirectory().ToString();
-            
             return rootPath;
-
         }
         
         public string getScreenShotsPath()
         {
             String env = System.IO.Directory.GetCurrentDirectory().ToString();
             String strgroupids = env.Remove(env.Length - 49);
-            String newPath = strgroupids + @"\ScreenShots\";
-           
+            String newPath = strgroupids + @"\ScreenShots\";           
             return newPath;
-           
-
         }
                     
         public string readFile(string env)
@@ -65,9 +57,6 @@ namespace TheWineSociety.FunctionalTests.Core
                 File.WriteAllText(path, createText);
             }
             return path;
-
-
-
         }
        
 

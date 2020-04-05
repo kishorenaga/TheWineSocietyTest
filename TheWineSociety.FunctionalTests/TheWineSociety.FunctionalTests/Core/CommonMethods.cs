@@ -59,7 +59,7 @@ namespace TheWineSociety.FunctionalTests.Core
 
             DefaultWait<IWebElement> wait = new DefaultWait<IWebElement>(element)
             {
-                Timeout = TimeSpan.FromSeconds(120),
+                Timeout = TimeSpan.FromSeconds(60),
                 PollingInterval = TimeSpan.FromSeconds(1)
             };
             wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
@@ -234,11 +234,7 @@ namespace TheWineSociety.FunctionalTests.Core
             }
         }
 
-        /// <summary>
-        /// Verify text on the webpage
-        /// </summary>
-        /// <param name="element"></param>
-        /// <param name="headerText"></param>
+        
         public void VerifyText(IWebElement element, string expectedText)
         {
             log.Info("Started validating text: " + expectedText);
