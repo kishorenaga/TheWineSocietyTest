@@ -90,7 +90,7 @@ namespace TheWineSociety.FunctionalTests.Core
             ScenarioContext.Current.Add("Env", Env);
             ScenarioContext.Current.Add("Browser", browser);
             ScenarioContext.Current.Add("Tag", tags);
-          //  fileReader.witeToFile("JMETER", writeToFile);
+          
         }
 
         /// <summary>
@@ -113,9 +113,9 @@ namespace TheWineSociety.FunctionalTests.Core
                         Driver = new FirefoxDriver(firefoxOptions);
                         Driver.Manage().Cookies.DeleteAllCookies();
                         Driver.Navigate().Refresh();
-                        Driver.Manage().Window.Size = new System.Drawing.Size(1280, 900);
+                        Driver.Manage().Window.Maximize();
+                        //Driver.Manage().Window.Size = new System.Drawing.Size(1280, 900);
 
-                        //Driver.Manage().Window.Maximize();
                     }
                     catch (Exception e)
                     {
@@ -134,36 +134,12 @@ namespace TheWineSociety.FunctionalTests.Core
                         //Options.AddArgument("--start-maximized");
                         Options.AddArgument("no-sandbox");
                         Driver = new ChromeDriver(Environment.CurrentDirectory, Options, TimeSpan.FromMinutes(1));
-                        //Driver.Manage().Window.Maximize();
-                        Driver.Manage().Window.Size = new System.Drawing.Size(1280, 900);
-
-
+                        Driver.Manage().Window.Maximize();
+                       // Driver.Manage().Window.Size = new System.Drawing.Size(1280, 900);
                     }
                     catch (Exception e)
                     {
 
-                        log.Info(e);
-                    }
-                    break;
-                case "IE":
-                    try
-                    {
-                        var options = new InternetExplorerOptions()
-                        {
-                            EnsureCleanSession = true,
-                            IntroduceInstabilityByIgnoringProtectedModeSettings = true,
-                            RequireWindowFocus = true,
-                            //ForceCreateProcessApi = true
-                        };
-                        string path = fileReader.getCurrentDriverPath();
-                        Driver = new InternetExplorerDriver(path, options);
-                        Driver.Manage().Window.Size = new System.Drawing.Size(1280, 900);
-                        Driver.Manage().Cookies.DeleteAllCookies();
-                        Driver.Navigate().Refresh();
-                        Driver.SwitchTo().DefaultContent();
-                    }
-                    catch (Exception e)
-                    {
                         log.Info(e);
                     }
                     break;
@@ -202,7 +178,7 @@ namespace TheWineSociety.FunctionalTests.Core
         [AfterTestRun]
         public static void TearDownReport()
         {
-            if (ConfigurationManager.AppSettings.Get("executionMode") == "local")
+            if (ConfigurationManager.AppSettings.Get("executionMode").ToLower() == "local")
             {
                 extent.Flush();
             }
@@ -219,7 +195,7 @@ namespace TheWineSociety.FunctionalTests.Core
         [AfterStep]
         public static void InsertReportingSteps()
         {
-            if (ConfigurationManager.AppSettings.Get("executionMode") == "local")
+            if (ConfigurationManager.AppSettings.Get("executionMode").ToLower() == "local")
             {
                 var stepType = ScenarioStepContext.Current.StepInfo.StepDefinitionType.ToString();
                 var Given = "<b>" + "Given: " + "</b>";
@@ -300,7 +276,7 @@ namespace TheWineSociety.FunctionalTests.Core
         public void Before()
         {          
                                   
-            executionMode = ConfigurationManager.AppSettings["executionMode"];
+            executionMode = ConfigurationManager.AppSettings["executionMode"].ToLower();
             //Browser Stack Execution 
             if(executionMode != "local")
             {

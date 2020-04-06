@@ -26,19 +26,19 @@ namespace TheWineSociety.FunctionalTests.Core
             set { }
         }
 
-        [Obsolete]
+     
         public void NavigateToUrl()
         {
             string envFromConfig = ScenarioContext.Current["URL"] as String;
             Log.Info("Navigate into site using: " + envFromConfig);
             driver.Navigate().GoToUrl(envFromConfig);
-            //WaitForPageToLoad();
+            WaitForPageToLoad();
         }
               
 
         public void EnterTextInTextField(IWebElement element, string txt)
         {
-           // log.Info("Started entering: " + txt);
+            log.Info("Started entering: " + txt);
             WaitForElementToBeVisible(element);
             element.Clear();
             element.SendKeys(txt);
