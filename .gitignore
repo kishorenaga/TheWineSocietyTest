@@ -1,6 +1,6 @@
-TheWineSociety.FunctionalTests/TheWineSociety.FunctionalTests/bin/Debug/*
-TheWineSociety.FunctionalTests/TheWineSociety.FunctionalTests/obj/Debug/*
-TheWineSociety.FunctionalTests/TheWineSociety.FunctionalTests/packages/*
-TheWineSociety.FunctionalTests/.vs/TheWineSociety.FunctionalTests/v16
+**/bin/Debug/*
+**/Debug/*
+**/packages/*
+TheWineSociety.FunctionalTests/.vs/TheWineSociety.FunctionalTests/v16/.*
 *.ide*
 
