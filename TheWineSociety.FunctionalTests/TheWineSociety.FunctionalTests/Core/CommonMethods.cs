@@ -27,6 +27,9 @@ namespace TheWineSociety.FunctionalTests.Core
         }
 
      
+        /// <summary>
+        /// Navigate to the URL
+        /// </summary>
         public void NavigateToUrl()
         {
             string envFromConfig = ScenarioContext.Current["URL"] as String;
@@ -34,16 +37,20 @@ namespace TheWineSociety.FunctionalTests.Core
             driver.Navigate().GoToUrl(envFromConfig);
             WaitForPageToLoad();
         }
-              
 
+        // <summary>
+        /// Enter Text in the text field
+        /// </summary>
+       
         public void EnterTextInTextField(IWebElement element, string txt)
         {
             log.Info("Started entering: " + txt);
             WaitForElementToBeVisible(element);
             element.Clear();
             element.SendKeys(txt);
+            Thread.Sleep(7000);
             log.Info("Finished entering: " + txt);
-            Thread.Sleep(10000);
+            
 
         }
 
@@ -53,9 +60,8 @@ namespace TheWineSociety.FunctionalTests.Core
         /// <param name="element"></param>
         public void WaitForElementToBeVisible(IWebElement element)
         {
-            // WaitForPageLoad();
+            
             log.Info("Wait for element to be visible");
-            //log.Info("TimeSpan"+TimeSpan.FromMinutes(TimeSpan.MaxValue.Minutes));
 
             DefaultWait<IWebElement> wait = new DefaultWait<IWebElement>(element)
             {

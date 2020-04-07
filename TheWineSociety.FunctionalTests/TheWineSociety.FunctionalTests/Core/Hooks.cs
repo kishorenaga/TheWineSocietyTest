@@ -53,7 +53,7 @@ namespace TheWineSociety.FunctionalTests.Core
             try
             {
                  Env = ConfigurationManager.AppSettings["environment"];
-                 browser = ConfigurationManager.AppSettings["browser"];
+                 browser = ConfigurationManager.AppSettings["browser"].ToLower();
 
             }
             catch (NullReferenceException)
@@ -68,7 +68,7 @@ namespace TheWineSociety.FunctionalTests.Core
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="environment">SSU4,PREPROD,DEV</param>
+        /// <param name="environment">DEV</param>
         public void setEnvironment(string environment)
         {
             string path = fileReader.readFile(environment);
@@ -100,7 +100,7 @@ namespace TheWineSociety.FunctionalTests.Core
         {
             switch (browser)
             {
-                case "FIREFOX":
+                case "firefox":
                     try
                     {
 
@@ -123,7 +123,7 @@ namespace TheWineSociety.FunctionalTests.Core
                     }
                     break;
 
-                case "CHROME":
+                case "chrome":
                     try
                     {
                         KillChromeDriver();
