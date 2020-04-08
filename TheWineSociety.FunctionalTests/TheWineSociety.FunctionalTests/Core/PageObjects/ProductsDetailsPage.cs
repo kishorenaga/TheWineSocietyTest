@@ -77,6 +77,23 @@ namespace TheWineSociety.FunctionalTests.Core.PageObjects
         [FindsBy(How = How.CssSelector, Using = ".recommended-product .row .product-tile__container .product-tile__image-container .product-image__link")]
         public IWebElement alternativeProductImage { set; get; }
 
+
+        //Regional Content
+        [FindsBy(How = How.CssSelector, Using = "#productAccordion .row #regionalContent")]
+        public IWebElement ExpandRegionalProfile { set;get; }
+
+        [FindsBy(How = How.CssSelector, Using = "#productAccordion .row .accordion__item #regionalContent .accordion__title")]
+        public IWebElement RegionalProfileHeading { set; get; }
+
+        [FindsBy(How = How.CssSelector, Using = "#productAccordion .row #collapseRegionalContent .accordion__body .h5")]
+        public IWebElement RegionalProfile { set; get; }
+
+        [FindsBy(How = How.CssSelector, Using = "#productAccordion .row #collapseRegionalContent .accordion__body .read-more")]
+        public IWebElement RegionalProfileDescription { set; get; }
+
+        [FindsBy(How = How.CssSelector, Using = "#productAccordion .row #collapseRegionalContent .profile__image-container img")]
+        public IWebElement RegionalProfileAvatar { set; get; }
+
         #endregion
         public void VerifyProducerDetails(string producerName, string producerDescription)
         {
@@ -115,6 +132,15 @@ namespace TheWineSociety.FunctionalTests.Core.PageObjects
             VerifyText(alternativeProductDescription, altProdDescription);
             IsElementExistsLocator(alternativeProductImage, true);
 
+        }
+
+        public void VerifyRegionalProfileDetails(string altRegionalProfile, string altRegionalDescription)
+        {
+            ClickElement(ExpandRegionalProfile);
+            VerifyText(RegionalProfileHeading, "Regional Content");
+            VerifyText(RegionalProfile, altRegionalProfile);
+            VerifyContainingText(RegionalProfileDescription, altRegionalDescription);
+            IsElementExistsLocator(RegionalProfileAvatar, true);
         }
 
     }

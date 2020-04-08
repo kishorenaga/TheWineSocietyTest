@@ -60,3 +60,13 @@ Scenario Outline: User can see the details of alternative product when the actua
 	Examples: 
 	| Name        | AlternativeProducerName | AlternativeShortDescription                                                   |
 	| Spanish Red | The Society's Gavi 2019 | Gavi is a great go-to white wine. Fresh crisp and dry with lemon and green... |
+
+	@e2e @RegionalContent
+Scenario Outline: User can see the Regional Content
+	Given I am on the products listing page
+	When I search for wines with '<Name>' using the refine search
+	And I select a product to see the Regional Content 
+	Then I see the '<Regional Content>', '<Description>' and Avatar of the product
+	Examples: 
+	| Name                              | Regional Content | Description                                                                  |
+	| The Society's Côtes-du-Rhône 2018 | London           | London is the capital and largest city of England and of the United Kingdom. |

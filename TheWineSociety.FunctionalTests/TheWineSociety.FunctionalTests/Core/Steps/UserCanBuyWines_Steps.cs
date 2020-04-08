@@ -43,7 +43,7 @@ namespace TheWineSociety.FunctionalTests.Core.Steps
             pages.productsListingPage.SortResultsList(sortType);
         }
 
-
+        [When(@"I select a product to see the Regional Content")]  
         [When(@"I select a product to see the product details")]
         [When(@"I select a out of stock product to see the details")]
         [When(@"I select a product to see the producer details")]
@@ -56,6 +56,12 @@ namespace TheWineSociety.FunctionalTests.Core.Steps
         public void ThenISeeProducerDetails(string producerName, string producerDescription)
         {
             pages.productsDetailsPage.VerifyProducerDetails(producerName, producerDescription);
+        }
+
+        [Then(@"I see the '(.*)', '(.*)' and Avatar of the product")]
+        public void ThenISeeTheAndAvatarOfTheProduct(string regionalProfile, string regionalDetails)
+        {
+            pages.productsDetailsPage.VerifyRegionalProfileDetails(regionalProfile, regionalDetails);
         }
 
 
